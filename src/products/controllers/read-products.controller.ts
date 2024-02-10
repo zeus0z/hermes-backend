@@ -1,20 +1,19 @@
-import { Controller, Get, Post, Body, BadRequestException, Param } from '@nestjs/common';
-import { CreateProductsService } from '../services/create-products.service';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ReadProductsService } from '../services/read-products.service';
 import { ProductDto } from '../dto/product.dto';
+
 
 
 @Controller('products')
 export class ReadProductsController {
     constructor(
-        private readonly readProductsService: ReadProductsService,
-        private readonly createProductsService: CreateProductsService) { }
+        private readonly readProductsService: ReadProductsService) { }
 
     @Get('get_all')
     async returnAllProducts(): Promise<any> {
         try {
             return await this.readProductsService.getAllProducts()
-            
+
         } catch (e) {
             console.error(e)
             throw e

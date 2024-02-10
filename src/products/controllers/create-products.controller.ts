@@ -1,15 +1,18 @@
-import { Controller,Post, Body, BadRequestException } from '@nestjs/common';
+import { Post, Body, BadRequestException, Controller } from '@nestjs/common';
 import { CreateProductsService } from '../services/create-products.service';
 import { ProductDto } from '../dto/product.dto';
 
 
+
 @Controller('products')
-export class CreateProductsController {
+export class CreateProductsController  {
     constructor(
-        private readonly createProductsService: CreateProductsService) { }
+        private readonly createProductsService: CreateProductsService) {
+       
+    }
 
 
-    @Post('create_product')
+    @Post('create')
     async createNewProduct(@Body() productDto: ProductDto) {
 
         const { sku,
