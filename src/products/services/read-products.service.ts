@@ -11,6 +11,8 @@ export class ReadProductsService {
     async getAllProducts(): Promise<any> {
         try {
             const produtos = await prisma.produtos.findMany();
+            console.clear();
+            console.log('Done fetching all products');
             return produtos;
         } catch (e) {
             throw e;

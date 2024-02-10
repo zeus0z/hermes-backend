@@ -14,6 +14,7 @@ export class ReadProductsController {
     async returnAllProducts(): Promise<any> {
         try {
             return await this.readProductsService.getAllProducts()
+            
         } catch (e) {
             console.error(e)
             throw e
@@ -38,45 +39,6 @@ export class ReadProductsController {
             return e
         }
 
-    }
-
-
-
-
-
-    @Post('create_product')
-    async createNewProduct(@Body() createProductDto: ProductDto) {
-
-        const { sku,
-            product_name,
-            product_image_url,
-            retail_price,
-            product_category,
-            product_variation,
-            product_description,
-            product_quantity,
-            is_out_of_stock } = createProductDto
-
-
-
-        try {
-            return await this.createProductsService.createNewProduct(
-                {
-                    sku,
-                    product_name,
-                    product_image_url,
-                    retail_price,
-                    product_category,
-                    product_variation,
-                    product_description,
-                    product_quantity,
-                    is_out_of_stock
-                }
-            )
-        } catch (e) {
-
-            throw new BadRequestException("Missing Fields")
-        }
     }
 
 

@@ -3,10 +3,12 @@ import { CreateProductsController } from './controllers/create-products.controll
 import { ReadProductsController } from './controllers/read-products.controller';
 import { CreateProductsService } from './services/create-products.service';
 import { ReadProductsService } from './services/read-products.service';
+import { DeleteProductsController } from './controllers/delete-products.controller';
+import { DeleteProductsService } from './services/delete-products.service';
 
 @Module({
-    controllers: [CreateProductsController, ReadProductsController],
-    providers: [CreateProductsService, ReadProductsService]
+    controllers: [CreateProductsController, ReadProductsController, DeleteProductsController],
+    providers: [CreateProductsService, ReadProductsService, DeleteProductsService]
 })
 
 export class ProductsModule { }
