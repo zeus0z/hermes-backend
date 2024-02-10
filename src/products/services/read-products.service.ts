@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
-import { PrismaClient } from "@prisma/client";
+import prisma from "src/config/prisma-client";
 import { ProductDto } from "../dto/product.dto";
 import { IProdutos } from "../interfaces/produto.interface";
-const prisma = new PrismaClient();
+
 
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ReadProductsService {
     async getSingleProductById(id: number): Promise<any> {
         try {
             return await prisma.produtos.findUnique({
-                where:{
+                where: {
                     id,
                 },
             })
@@ -36,8 +36,8 @@ export class ReadProductsService {
     async getAllProductsByName(name: string): Promise<any> {
         try {
             return await prisma.produtos.findMany({
-                where:{
-                    product_name:{
+                where: {
+                    product_name: {
                         contains: name
                     }
                 },
@@ -49,17 +49,17 @@ export class ReadProductsService {
         }
     }
 
-    async getProductsByCategory(category_number:number):Promise<any>{
-        try{
+    async getProductsByCategory(category_number: number): Promise<any> {
+        try {
             return await prisma.produtos.findMany({
-                where:{
-                    product_category:{
+                where: {
+                    product_category: {
                         equals: category_number
                     }
                 }
             })
-        } catch (e){
-            throw(e)
+        } catch (e) {
+            throw (e)
         } finally {
             await prisma.$disconnect()
         }

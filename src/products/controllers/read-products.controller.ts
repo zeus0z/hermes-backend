@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, BadRequestException, Param } from '@nestjs/common';
-import { CreateProductsService } from '../services/crete-products.service';
+import { CreateProductsService } from '../services/create-products.service';
 import { ReadProductsService } from '../services/read-products.service';
 import { ProductDto } from '../dto/product.dto';
 
