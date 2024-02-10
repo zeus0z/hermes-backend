@@ -1,4 +1,4 @@
-export class CreateProductDto {
+export class ProductDto {
     readonly sku: string;
     readonly product_name: string;
     readonly product_image_url: string;

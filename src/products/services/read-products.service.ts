@@ -1,12 +1,12 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { PrismaClient } from "@prisma/client";
-import { CreateProductDto } from "./dto/create-product.dto";
-import { IProdutos } from "./interfaces/produto.interface";
+import { ProductDto } from "../dto/product.dto";
+import { IProdutos } from "../interfaces/produto.interface";
 const prisma = new PrismaClient();
 
 
 @Injectable()
-export class LojaReadService {
+export class ReadProductsService {
 
     async getAllProducts(): Promise<any> {
         try {

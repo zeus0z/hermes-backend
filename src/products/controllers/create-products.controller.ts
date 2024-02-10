@@ -1,16 +1,16 @@
 import { Controller,Post, Body, BadRequestException } from '@nestjs/common';
-import { LojaCreateService } from '../loja-create.service';
-import { CreateProductDto } from '../dto/create-product.dto';
+import { CreateProductsService } from '../services/crete-products.service';
+import { ProductDto } from '../dto/product.dto';
 
 
-@Controller('loja')
-export class CreateLojaController {
+@Controller('products')
+export class CreateProductsController {
     constructor(
-        private readonly lojaCreateService: LojaCreateService) { }
+        private readonly createProductsService: CreateProductsService) { }
 
 
     @Post('create_product')
-    async createNewProduct(@Body() createProductDto: CreateProductDto) {
+    async createNewProduct(@Body() productDto: ProductDto) {
 
         const { sku,
             product_name,
@@ -20,12 +20,12 @@ export class CreateLojaController {
             product_variation,
             product_description,
             product_quantity,
-            is_out_of_stock } = createProductDto
+            is_out_of_stock } = productDto
 
 
 
         try {
-            return await this.lojaCreateService.createNewProduct(
+            return await this.createProductsService.createNewProduct(
                 {
                     sku,
                     product_name,

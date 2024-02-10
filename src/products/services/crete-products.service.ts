@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { PrismaClient } from "@prisma/client";
-import { CreateProductDto } from "./dto/create-product.dto";
+import { ProductDto } from "../dto/product.dto";
 const prisma = new PrismaClient();
 
 
 @Injectable()
-export class LojaCreateService {
+export class CreateProductsService {
 
     async getAllProducts(): Promise<any> {
         try {
@@ -28,10 +28,10 @@ export class LojaCreateService {
             product_variation,
             product_description,
             product_quantity,
-            is_out_of_stock }: CreateProductDto
+            is_out_of_stock }: ProductDto
     ): Promise<any> {
 
-        if (!CreateProductDto) {
+        if (!ProductDto) {
             throw new BadRequestException('Some of the fields are missing')
         }
 
