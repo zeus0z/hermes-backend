@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 
 @Injectable()
-export class LojaService {
+export class LojaCreateService {
 
     async getAllProducts(): Promise<any> {
         try {
