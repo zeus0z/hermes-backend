@@ -7,10 +7,10 @@ export class CreateProductsService {
 
     async getAllProducts(): Promise<any> {
         try {
-            const produtos = await prisma.produtos.findMany();
-            return produtos;
+            const products = await prisma.products.findMany();
+            return products;
         } catch (e) {
-            console.error("Erro ao buscar produtos:", e);
+            console.error("Erro ao buscar products:", e);
             throw e;
         } finally {
             await prisma.$disconnect()
@@ -25,8 +25,8 @@ export class CreateProductsService {
             product_category,
             product_variation,
             product_description,
-            product_quantity,
-            is_out_of_stock }: ProductDto
+            product_quantity
+             }: ProductDto
     ): Promise<any> {
 
         if (!ProductDto) {
@@ -34,7 +34,8 @@ export class CreateProductsService {
         }
 
         try {
-            await prisma.produtos.create({
+            
+            await prisma.products.create({
                 data: {
 
                     sku,
@@ -44,8 +45,7 @@ export class CreateProductsService {
                     product_category,
                     product_variation,
                     product_description,
-                    product_quantity,
-                    is_out_of_stock
+                    product_quantity
 
                 }
             })

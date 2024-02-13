@@ -7,15 +7,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model produtos {
-  id                  Int      @id @default(autoincrement())
-  sku                 String   @db.VarChar(50)
-  product_name        String   @db.VarChar(50)
-  product_image_url   String?  @db.VarChar(255)
-  retail_price        Decimal? @db.Decimal(10, 2)
+model categories {
+  id            Int          @id @default(autoincrement())
+  category_name String?      @db.VarChar(30)
+  products      products[]
+  variations    variations[]
+}
+
+model product_images {
+  id         Int      @id
+  product_id Int
+  image_url  String?  @db.VarChar(300)
+  products   products @relation(fields: [product_id], references: [id], onDelete: Cascade, map: "product_images_ibfk_1")
+
+  @@index([product_id], map: "product_id")
+}
+
+model products {
+  id                  Int              @id @default(autoincrement())
+  sku                 String?          @db.VarChar(50)
+  product_name        String           @db.VarChar(50)
+  product_image_url   String?          @db.VarChar(255)
+  retail_price        Decimal?         @db.Decimal(10, 2)
   product_category    Int?
   product_variation   Int?
-  product_description String?  @db.VarChar(500)
+  product_description String?          @db.VarChar(500)
   product_quantity    Int?
-  is_out_of_stock     Boolean?
+  created_by_user     Int?
+  product_images      product_images[]
+  users               users?           @relation(fields: [created_by_user], references: [id], onDelete: Cascade, map: "products_ibfk_1")
+  categories          categories?      @relation(fields: [product_category], references: [id], map: "products_ibfk_2")
+  variations          variations?      @relation(fields: [product_variation], references: [id], map: "products_ibfk_3")
+
+  @@index([created_by_user], map: "created_by_user")
+  @@index([product_category], map: "product_category")
+  @@index([product_variation], map: "product_variation")
+}
+
+model users {
+  id              Int        @id @default(autoincrement())
+  email           String     @db.VarChar(80)
+  password        Int
+  profile_picture String?    @db.VarChar(300)
+  username        String?    @db.VarChar(30)
+  products        products[]
+}
+
+model variations {
+  id                  Int         @id @default(autoincrement())
+  variation_name      String      @db.VarChar(30)
+  belongs_to_category Int?
+  products            products[]
+  categories          categories? @relation(fields: [belongs_to_category], references: [id], onDelete: Cascade, map: "variations_ibfk_1")
+
+  @@index([belongs_to_category], map: "belongs_to_category")
 }

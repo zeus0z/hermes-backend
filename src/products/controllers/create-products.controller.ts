@@ -22,8 +22,8 @@ export class CreateProductsController  {
             product_category,
             product_variation,
             product_description,
-            product_quantity,
-            is_out_of_stock } = productDto
+            product_quantity
+            } = productDto
 
 
 
@@ -37,8 +37,8 @@ export class CreateProductsController  {
                     product_category,
                     product_variation,
                     product_description,
-                    product_quantity,
-                    is_out_of_stock
+                    product_quantity
+                   
                 }
             )
         } catch (e) {

@@ -7,7 +7,7 @@ export class DeleteProductsService {
     
     async deleteProductWithID(id:number): Promise<any>{
         try{
-            await prisma.produtos.delete({
+            await prisma.products.delete({
                 where:{
                     id
                 }

@@ -1,4 +1,4 @@
-export interface IProdutos {
+export interface IProduct {
     sku: string,
     product_name: string,
     product_image_url: string,
@@ -6,6 +6,5 @@ export interface IProdutos {
     product_category: number,
     product_variation: number,
     product_description: string,
-    product_quantity:number,
-    is_out_of_stock?:boolean
+    product_quantity:number
 }

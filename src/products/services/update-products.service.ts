@@ -14,11 +14,10 @@ export class UpdateProductsService {
         product_category,
         product_variation,
         product_description,
-        product_quantity,
-        is_out_of_stock
+        product_quantity
     }: ProductDto): Promise<any> {
         try {
-            await prisma.produtos.update({
+            await prisma.products.update({
                 where: {
                     id
                 },
@@ -30,8 +29,7 @@ export class UpdateProductsService {
                     product_category,
                     product_variation,
                     product_description,
-                    product_quantity,
-                    is_out_of_stock
+                    product_quantity
                 }
             })
             return 'Product update sucessfully'

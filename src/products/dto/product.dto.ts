@@ -7,5 +7,5 @@ export class ProductDto {
     readonly product_variation: number;
     readonly product_description: string;
     readonly product_quantity: number;
-    readonly is_out_of_stock?: boolean
+   
 }

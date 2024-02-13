@@ -35,6 +35,7 @@ export class ReadProductsController {
         try {
             return await this.readProductsService.getAllProductsByName(name)
         } catch (e) {
+            console.error(e)
             return e
         }
 
