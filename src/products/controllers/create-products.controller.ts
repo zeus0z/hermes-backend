@@ -5,10 +5,10 @@ import { ProductDto } from '../dto/product.dto';
 
 
 @Controller('products')
-export class CreateProductsController  {
+export class CreateProductsController {
     constructor(
         private readonly createProductsService: CreateProductsService) {
-       
+
     }
 
 
@@ -18,36 +18,31 @@ export class CreateProductsController  {
         const { sku,
             product_name,
             product_image_url,
-            retail_price,
-            product_category,
-            product_variation,
             product_description,
-            product_quantity
-            } = productDto
+        } = productDto
 
+       const retail_price = Number(productDto.retail_price)
+       const product_category = Number(productDto.product_category)
+       const product_quantity = Number(productDto.product_quantity)
 
+      
 
         try {
-            return await this.createProductsService.createNewProduct(
+             await this.createProductsService.createNewProduct(
                 {
                     sku,
                     product_name,
                     product_image_url,
                     retail_price,
                     product_category,
-                    product_variation,
                     product_description,
                     product_quantity
-                   
                 }
             )
         } catch (e) {
-
-            throw new BadRequestException("Missing Fields")
+            throw e
         }
     }
-
-
 
 }
 

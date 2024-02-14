@@ -12,7 +12,7 @@ export class UpdateProductsService {
         product_image_url,
         retail_price,
         product_category,
-        product_variation,
+        // product_variation,
         product_description,
         product_quantity
     }: ProductDto): Promise<any> {
@@ -27,7 +27,7 @@ export class UpdateProductsService {
                     product_image_url,
                     retail_price,
                     product_category,
-                    product_variation,
+                    // product_variation,
                     product_description,
                     product_quantity
                 }

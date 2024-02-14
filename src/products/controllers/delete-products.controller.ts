@@ -18,9 +18,7 @@ export class DeleteProductsController  {
             return `Product with ID ${id} deleted successfully!`
         } catch (e) {
             return e.meta.cause
-        } finally {
-            await prisma.$disconnect()
-        }
+        } 
     }
 
 }
