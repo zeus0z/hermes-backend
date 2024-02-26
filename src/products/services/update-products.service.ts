@@ -32,7 +32,7 @@ export class UpdateProductsService {
                     product_quantity
                 }
             })
-            return 'Product update sucessfully'
+           
         } catch (e) {
             throw e
         } finally {

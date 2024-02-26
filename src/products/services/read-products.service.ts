@@ -21,6 +21,8 @@ export class ReadProductsService {
         }
     }
 
+   
+
     async getSingleProductById(id: number): Promise<any> {
         try {
             return await prisma.products.findUnique({

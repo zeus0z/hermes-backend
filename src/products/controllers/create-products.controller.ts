@@ -1,15 +1,16 @@
 import { Post, Body, BadRequestException, Controller } from '@nestjs/common';
 import { CreateProductsService } from '../services/create-products.service';
 import { ProductDto } from '../dto/product.dto';
+import { ReadProductsService } from '../services/read-products.service';
 
 
 
 @Controller('products')
 export class CreateProductsController {
     constructor(
-        private readonly createProductsService: CreateProductsService) {
-
-    }
+        private readonly createProductsService: CreateProductsService,
+        private readonly readProductsService: ReadProductsService) { }
+        
 
 
     @Post('create')
@@ -39,6 +40,10 @@ export class CreateProductsController {
                     product_quantity
                 }
             )
+
+            return this.readProductsService.getAllProductsByName(product_name);
+            
+
         } catch (e) {
             throw e
         }
