@@ -6,30 +6,31 @@ import { ProductDto } from "../dto/product.dto";
 @Injectable()
 export class UpdateProductsService {
 
-    async updateProductWithId(id: number, {
+    async updateProductWithId( {
+        id,
         sku,
         product_name,
         product_image_url,
         retail_price,
         product_category,
-        // product_variation,
         product_description,
         product_quantity
     }: ProductDto): Promise<any> {
         try {
             await prisma.products.update({
                 where: {
-                    id
+                    id : Number(id)
                 },
                 data: {
+                   
                     sku,
                     product_name,
                     product_image_url,
-                    retail_price,
-                    product_category,
+                    retail_price : Number(retail_price),
+                    product_category: Number(product_category),
                     // product_variation,
                     product_description,
-                    product_quantity
+                    product_quantity : Number(product_quantity)
                 }
             })
            
