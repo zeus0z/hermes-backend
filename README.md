@@ -5,8 +5,8 @@ Esse é o repositório do backend da aplicação [Hermes](https://github.com/zeu
 Inclui os Models e Controllers da aplicação, responsáveis por lidar com o banco de dados e autenticação.
 
 ## Estrutura do Projeto
-O Hermes é composto de um [frontend em NextJS]() e um backend construído em NestJS (este repositório), usando um banco de dados MySQL. 
-A aplicação faz uso do modelo MVC (Model, View, Controller)
+- O Hermes é composto de um [frontend em NextJS](https://github.com/zeus0z/hermes-frontend) e um backend construído em NestJS (este repositório), usando um banco de dados MySQL. 
+- A aplicação faz uso do modelo MVC (Model, View, Controller)
 
 ## Ajustes e Melhorias
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
